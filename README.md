@@ -9,7 +9,6 @@ This is an api to e-commerce.
 
 ## Tech stack
 ![GO](https://img.shields.io/badge/-Go-05122A?style=flat&logo=Go)&nbsp;
-![nestjs](https://img.shields.io/badge/-Nestjs-05122A?style=flat&logo=nestjs)&nbsp;
 
 ## How to use 🫁
 
