@@ -44,7 +44,7 @@ func (wch *WebCategoryHandler) GetCategory(w http.ResponseWriter, r *http.Reques
 	json.NewEncoder(w).Encode(category)
 }
 
-func (wch WebCategoryHandler) CreateCategory(w http.ResponseWriter, r *http.Response) {
+func (wch WebCategoryHandler) CreateCategory(w http.ResponseWriter, r *http.Request) {
 	var category entity.Category
 
 	err := json.NewDecoder(r.Body).Decode(&category)
