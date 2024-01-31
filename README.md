@@ -1,9 +1,9 @@
 # Store-API
-This is an api to e-commerce.
+This is an api to compose a e-commerce with microsservices.
 
-👷🏿‍♂️**This project is under development**🛠️
+![giphy](https://github.com/upALX/All-Assets/blob/main/on-mvp.webp)
 
-![giphy](https://github.com/upALX/All-Assets/blob/main/construction-little-girl.webp)
+🎇**This project is on MVP**🎇
 
 ---
 
