@@ -45,14 +45,14 @@ func (wph *WebProductHandler) GetProduct(w http.ResponseWriter, r *http.Request)
 }
 
 func (wph *WebProductHandler) GetProductByCategoryID(w http.ResponseWriter, r *http.Request) {
-	productID := chi.URLParam(r, "productID")
+	categoryID := chi.URLParam(r, "category_id")
 
-	if productID == "" {
-		http.Error(w, "productID is required.", http.StatusBadRequest)
+	if categoryID == "" {
+		http.Error(w, "category_id is required.", http.StatusBadRequest)
 		return
 	}
 
-	products, err := wph.ProductService.GetProductsByCategoryID(productID)
+	products, err := wph.ProductService.GetProductsByCategoryID(categoryID)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
