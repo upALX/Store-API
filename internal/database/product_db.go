@@ -72,7 +72,7 @@ func (pd *ProductDB) CreateProduct(product *entity.Product) (*entity.Product, er
 
 	println("TRYING INSERT ON DB THE VALUES: ", product)
 
-	_, err := pd.db.Exec("INSERT INTO product (id, name, description, price, category_id, image_url) VALUES (?,?,?,?,?,?)", product.ID, product.Name, product.Description, product.Price, product.CategoryID, product.ImageURL)
+	_, err := pd.db.Exec("INSERT INTO products (id, name, description, price, category_id, image_url) VALUES (?,?,?,?,?,?)", product.ID, product.Name, product.Description, product.Price, product.CategoryID, product.ImageURL)
 
 	if err != nil {
 		return nil, err
