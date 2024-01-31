@@ -52,7 +52,7 @@ func (wph *WebProductHandler) GetProductByCategoryID(w http.ResponseWriter, r *h
 		return
 	}
 
-	products, err := wph.ProductService.GetProducsByCategoryID(productID)
+	products, err := wph.ProductService.GetProductsByCategoryID(productID)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -62,17 +62,28 @@ func (wph *WebProductHandler) GetProductByCategoryID(w http.ResponseWriter, r *h
 }
 
 func (wph WebProductHandler) CreateProduct(w http.ResponseWriter, r *http.Request) {
+	println("IS TRYING CREATE A PRODUCT...")
+
 	var product entity.Product
+
+	println("AFTER VAR")
 
 	err := json.NewDecoder(r.Body).Decode(&product)
 
+	println("AFTER ERROR HAND")
+
 	if err != nil {
+		println("HAS AN ERROR", w)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
+
+	println("IS TRYING GET INTO SERVICE...")
 	result, err := wph.ProductService.CreateProduct(product.Name, product.Description, product.CategoryID, product.ImageURL, product.Price)
 
+
 	if err != nil {
+		println("HAS AN ERROR ON CREATE THE PRODUCT ON DB...")
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}

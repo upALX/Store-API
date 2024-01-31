@@ -14,12 +14,12 @@ func NewProductService(productDB database.ProductDB) *ProductService {
 }
 
 func (ps *ProductService) GetProducts() ([]*entity.Product, error) {
-	productcs, err := ps.ProductDB.GetProducts()
+	products, err := ps.ProductDB.GetProducts()
 
 	if err != nil {
 		return nil, err
 	}
-	return productcs, nil
+	return products, nil
 }
 
 func (ps *ProductService) GetProduct(id string) (*entity.Product, error) {
@@ -32,8 +32,8 @@ func (ps *ProductService) GetProduct(id string) (*entity.Product, error) {
 	return product, nil
 }
 
-func (ps *ProductService) GetProducsByCategoryID(categoryID string) ([]*entity.Product, error) {
-	products, err := ps.ProductDB.GetProducsByCategoryID(categoryID)
+func (ps *ProductService) GetProductsByCategoryID(categoryID string) ([]*entity.Product, error) {
+	products, err := ps.ProductDB.GetProductsByCategoryID(categoryID)
 
 	if err != nil {
 		return nil, err
@@ -42,12 +42,15 @@ func (ps *ProductService) GetProducsByCategoryID(categoryID string) ([]*entity.P
 	return products, nil
 }
 
-func (ps *ProductService) CreateProduct(name, description, categoryID, imageID string, price float64) (*entity.Product, error) {
-	product := entity.NewProduct(name, description, categoryID, imageID, price)
+func (ps *ProductService) CreateProduct(name, description, categoryID, imageURL string, price float64) (*entity.Product, error) {
+	product := entity.NewProduct(name, description, categoryID, imageURL, price)
 
 	_, err := ps.ProductDB.CreateProduct(product)
 
+	println("IS HERE ON CREATE PRODUCT SERVICE")
+
 	if err != nil {
+		println("HAS AN ERROR ON SERVICE")
 		return nil, err
 	}
 

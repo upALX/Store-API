@@ -46,7 +46,7 @@ func (pd *ProductDB) GetProduct(id string) (*entity.Product, error) {
 	return &product, nil
 }
 
-func (pd *ProductDB) GetProducsByCategoryID(productID string) ([]*entity.Product, error) {
+func (pd *ProductDB) GetProductsByCategoryID(productID string) ([]*entity.Product, error) {
 	rows, err := pd.db.Query("SELECT id, name, description, price, product+id, image_url from products where product_id = ?", productID)
 
 	if err != nil {
@@ -69,6 +69,9 @@ func (pd *ProductDB) GetProducsByCategoryID(productID string) ([]*entity.Product
 }
 
 func (pd *ProductDB) CreateProduct(product *entity.Product) (*entity.Product, error) {
+
+	println("TRYING INSERT ON DB THE VALUES: ", product)
+
 	_, err := pd.db.Exec("INSERT INTO product (id, name, description, price, category_id, image_url) VALUES (?,?,?,?,?,?)", product.ID, product.Name, product.Description, product.Price, product.CategoryID, product.ImageURL)
 
 	if err != nil {
