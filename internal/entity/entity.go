@@ -20,7 +20,7 @@ type Product struct {
 	Description string
 	Price       float64
 	CategoryID  string
-	imageURL    string
+	ImageURL    string
 }
 
 func NewProduct(name, description string, price float64, categoryID, imageURL string) *Product {
@@ -30,6 +30,6 @@ func NewProduct(name, description string, price float64, categoryID, imageURL st
 		Description: description,
 		Price:       price,
 		CategoryID:  categoryID,
-		imageURL:    imageURL,
+		ImageURL:    imageURL,
 	}
 }
